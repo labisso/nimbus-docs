@@ -1,0 +1,129 @@
+{#
+    nimbus-agogo/layout.html
+    ~~~~~~~~~~~~~~~~~
+    
+    sphinx-agogo theme modified for Nimbus documention by David
+    LaBissoniere. Original header below:
+
+    Sphinx layout template for the agogo theme, originally written
+    by Andi Albrecht.
+
+    :copyright: Copyright 2007-2011 by the Sphinx team, see AUTHORS.
+    :license: BSD, see LICENSE for details.
+#}
+{% extends "basic/layout.html" %}
+
+{# 
+    doing some terrible things to fit into EE document template deal:
+    everything between the "BEGIN HEAD" and "END HEAD" HTML comments
+    gets dropped into head of final document. Likewise with
+    BEGIN/END BODY. There aren't easy points for adding these in the
+    basic sphinx template so we are overriding blocks that happen to
+    be in the right place. This will bite us later.
+#}
+{% block htmltitle %}
+<!-- BEGIN HEAD -->
+{{ super() }}
+{% endblock %}
+
+{% block header %}
+    <div class="header-wrapper">
+      <div class="header">
+        {%- if logo %}
+          <p class="logo"><a href="{{ pathto(master_doc) }}">
+            <img class="logo" src="{{ pathto('_static/' + logo, 1) }}" alt="Logo"/>
+          </a></p>
+        {%- endif %}
+        {%- block headertitle %}
+        <h1><a href="{{ pathto(master_doc) }}">{{ shorttitle|e }}</a></h1>
+        {%- endblock %}
+        <div class="rel">
+          {%- for rellink in rellinks|reverse %}
+          <a href="{{ pathto(rellink[0]) }}" title="{{ rellink[1]|striptags|e }}"
+             {{ accesskey(rellink[2]) }}>{{ rellink[3] }}</a>
+          {%- if not loop.last %}{{ reldelim2 }}{% endif %}
+          {%- endfor %}
+        </div>
+       </div>
+   </div>
+{% endblock %}
+
+{%- block extrahead %}
+<!-- END HEAD -->
+{% endblock %}
+
+{% block content %}
+<!-- BEGIN BODY -->
+    <div class="content-wrapper">
+      <div class="doccontent">
+        <div class="document">
+          {%- block document %}
+            {{ super() }}
+          {%- endblock %}
+        </div>
+        <div class="sidebar">
+          {%- block sidebartoc %}
+          <h3>Contents</h3>
+          {{ toc }}
+          {%- endblock %}
+          
+          {%- block sidebarrel %}
+          <h3>Browse</h3>
+          <ul>
+          {% if prev %}
+          <li>Prev: <a href="{{ prev.link }}">{{ prev.title }}</a></li>
+          {% endif %}
+          {% if next %}
+          <li>Next: <a href="{{ next.link }}">{{ next.title }}</a></li>
+          {% endif %}
+          </ul>
+          <h3>You are here:</h3>
+          <ul>
+            <li>
+              <a href="{{ pathto('index') }}">{{ docstitle }}</a>
+              {% for p in parents %}
+                <ul><li><a href="{{ p.link }}">{{ p.title }}</a>
+              {% endfor %}
+              <ul><li>{{ title }}</li></ul>
+              {% for p in parents %}</li></ul>{% endfor %}
+            </li>
+          </ul>
+
+          {%- endblock %}
+          
+          {%- block sidebarsearch %}
+          {%- endblock %}
+        </div>
+        <div class="clearer"></div>
+      </div>
+  </div>
+<!-- END BODY -->
+{% endblock %}
+
+{% block footer %}
+
+    <div class="footer-wrapper">
+      <div class="footer">
+        <div class="left">
+          {%- for rellink in rellinks|reverse %}
+          <a href="{{ pathto(rellink[0]) }}" title="{{ rellink[1]|striptags|e }}"
+             {{ accesskey(rellink[2]) }}>{{ rellink[3] }}</a>
+          {%- if not loop.last %}{{ reldelim2 }}{% endif %}
+          {%- endfor %}
+          {%- if show_source and has_source and sourcename %}
+            <br/>
+            <a href="{{ pathto('_sources/' + sourcename, true)|e }}"
+               rel="nofollow">{{ _('Show Source') }}</a>
+          {%- endif %}
+        </div>
+
+        <div class="right">
+          {{ super() }}
+        </div>
+        <div class="clearer"></div>
+      </div>
+  </div>
+{% endblock %}
+
+{% block relbar1 %}{% endblock %}
+{% block relbar2 %}{% endblock %}

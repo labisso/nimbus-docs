@@ -1,0 +1,24 @@
+@import url(doc.css);
+
+body {
+  font-family: {{ theme_bodyfont }};
+  line-height: 1.4em;
+  color: black;
+  background-color: {{ theme_bgcolor }};
+}
+
+a {
+  color: {{ theme_linkcolor }};
+}
+
+h1, h2, h3, h4 {
+  font-family: {{ theme_headerfont }};
+  font-weight: normal;
+  color: {{ theme_headercolor2 }};
+  margin-bottom: .8em;
+}
+
+h1 {
+  color: {{ theme_headercolor1 }};
+}
+
