@@ -26,16 +26,24 @@
 {{ super() }}
 {% endblock %}
 
+{%- block extrahead %}
+<!-- END HEAD -->
+
+{# idea here is that the standalone styles are only included when not in EE. #}
+<link rel="stylesheet" href="{{ pathto('_static/standalone.css', 1) }}" type="text/css" />
+{% endblock %}
+
+
 {% block header %}
-    <div class="header-wrapper">
-      <div class="header">
+    <div class="docheader-wrapper">
+      <div class="docheader">
         {%- if logo %}
           <p class="logo"><a href="{{ pathto(master_doc) }}">
             <img class="logo" src="{{ pathto('_static/' + logo, 1) }}" alt="Logo"/>
           </a></p>
         {%- endif %}
         {%- block headertitle %}
-        <h1><a href="{{ pathto(master_doc) }}">{{ shorttitle|e }}</a></h1>
+        <h1><a href="{{ pathto(master_doc) }}">{{ shorttitle|e }}</a></h1> 
         {%- endblock %}
         <div class="rel">
           {%- for rellink in rellinks|reverse %}
@@ -46,10 +54,6 @@
         </div>
        </div>
    </div>
-{% endblock %}
-
-{%- block extrahead %}
-<!-- END HEAD -->
 {% endblock %}
 
 {% block content %}

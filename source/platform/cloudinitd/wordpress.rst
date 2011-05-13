@@ -11,7 +11,7 @@ This example will launch an EC2 cloud application which runs a
 will be launched, the first runs a `MySQL <http://www.mysql.com>`_
 database, and the second runs the wordpress service.
 
-.. note:
+.. warning::
     Running VMs on EC2 requires an EC2 account which will be charged.  At the
     time of this writing the rates for an m1.small instance is $0.085 per hour.
     Rates can be checked `here <http://aws.amazon.com/ec2/pricing/>`_.
@@ -32,7 +32,9 @@ example, boot it in EC2, and present you will a functional wordpress service. ::
     $ cloudinitd -v -v -v boot wordpress/top.conf
 
 When this completes a full wordpress service will be ready for your use.
-The output of cloudinit.d will look something like this::
+The output of cloudinit.d will look something like this:
+
+.. code-block:: none
 
     Starting up run c80e7e2c
         Started IaaS work for mysql

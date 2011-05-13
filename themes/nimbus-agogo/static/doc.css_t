@@ -17,11 +17,6 @@ div.header, div.doccontent, div.footer {
   font: 1.01em Verdana,sans-serif;
 }
 
-div.header-wrapper {
-  background: {{ theme_headerbg }};
-  border-bottom: 3px solid #2e3436;
-}
-
 div.bodywrapper a, div.footer a {
   text-decoration: underline;
 }
@@ -89,13 +84,15 @@ dt:target, .highlighted {
   background-color: #fbe54e;
 }
 
-/* Header */
-
-div.header {
-  padding-top: 10px;
-  padding-bottom: 10px;
+div.docheader {
+  padding: 10px;
+}
+div.docheader div.rel {
+  margin-top: 1em;
 }
 
+
+/* Header 
 div.header h1 {
   font-family: {{ theme_headerfont }};
   font-weight: normal;
@@ -105,10 +102,6 @@ div.header h1 {
 
 div.header h1 a {
   color: white;
-}
-
-div.header div.rel {
-  margin-top: 1em;
 }
 
 div.header div.rel a {
@@ -125,11 +118,11 @@ img.logo {
     border: 0;
 }
 
-
+*/
 /* Content */
 div.content-wrapper {
   background-color: white;
-  padding-top: 20px;
+  padding-top: 10px;
   padding-bottom: 20px;
 }
 

@@ -45,6 +45,7 @@ Overview
 ========
 
 cloudinit.d arranges an application into three basic constructs:
+
 * service
 * boot level
 * launch plan

@@ -22,3 +22,45 @@ h1 {
   color: {{ theme_headercolor1 }};
 }
 
+div.docheader-wrapper {
+  background: {{ theme_headerbg }};
+  border-bottom: 3px solid #2e3436;
+}
+
+/* Header */
+
+div.docheader {
+  padding-top: 10px;
+  padding-bottom: 10px;
+}
+
+div.docheader h1 {
+  font-family: {{ theme_headerfont }};
+  font-weight: normal;
+  font-size: 180%;
+  letter-spacing: .08em;
+}
+
+div.docheader h1 a {
+  color: white;
+}
+
+div.docheader div.rel {
+  margin-top: 1em;
+}
+
+div.docheader div.rel a {
+  color: {{ theme_headerlinkcolor }};
+  letter-spacing: .1em;
+  text-transform: uppercase;
+}
+
+p.logo {
+    float: right;
+}
+
+img.logo {
+    border: 0;
+}
+
+
